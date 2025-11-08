@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  sharenv:
+    build: .
+    container_name: sharenv
+    ports:
+      - "5500:5500"
+    volumes:
+      - ./vars:/app/vars
+      - ./aliases:/app/aliases
+    environment:
+      - PORT=5500
+      - HOST=0.0.0.0
+      - SHARENV_TOKEN=your-secret-token-here
+    restart: unless-stopped
